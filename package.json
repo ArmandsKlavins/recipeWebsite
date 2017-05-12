@@ -1,0 +1,30 @@
+{
+  "name": "recipe-website",
+  "version": "1.0.0",
+  "description": "Simple recipe website",
+  "scripts": {
+    "serve": "webpack-dev-server --open",
+    "serve:dist": "webpack && webpack-dev-server --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArmandsKlavins/recipeWebsite.git"
+  },
+  "author": "Armands Klavins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArmandsKlavins/recipeWebsite/issues"
+  },
+  "homepage": "https://github.com/ArmandsKlavins/recipeWebsite#readme",
+  "devDependencies": {
+    "angular": "^1.5.9",
+    "html-webpack-plugin": "^2.28.0",
+    "typings": "^2.1.1",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "@types/angular": "^1.6.17"
+  }
+}
