@@ -5,7 +5,7 @@ export class RouterConfig {
     ) {
         $stateProvider.state({
             name: 'recipes',
-            url: '/recipes',
+            url: '/',
             template: require('./recipes.html'),
             controller: 'RecipesController as vm'
         });

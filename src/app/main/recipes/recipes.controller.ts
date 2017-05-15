@@ -1,9 +1,10 @@
+import { RecipeModel } from './recipes.model';
+
 export interface IRecipesScope extends ng.IScope {
     /**
      * Sample text on $scope
      */
-    //recipe: Models.Recipe;
-    recipe: string;
+    recipe: RecipeModel;
 }
 
 export class RecipesController {
@@ -12,8 +13,8 @@ export class RecipesController {
         private $scope: IRecipesScope
     ) {
         // Init
-        $scope.recipe = "Cake";
-        // $scope.recipe.servings = 2;
-        // $scope.recipe.title = 'Cake';
+        $scope.recipe = new RecipeModel;
+        $scope.recipe.servings = 2;
+        $scope.recipe.title = 'Cake';
     }
 }
