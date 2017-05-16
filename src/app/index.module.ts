@@ -12,7 +12,7 @@ var dependecies = [
   'app.recipes'
 ]
 
-
 angular.module('appDashboard', dependecies)
 
-  .config(RouterConfig);
+  .config(RouterConfig)
+  .component('myHeader',{template:require('./header/header.html')});
