@@ -1,0 +1,36 @@
+<md-dialog aria-label="" flex="50">
+
+    <md-toolbar style="background: #32ad90;color:black;font-weight:bold;">
+        <div class="md-toolbar-tools">
+            <h2><span>{{recipe.title}}</span></h2>
+            <span flex></span>
+            <!--<md-button class="md-icon-button" ng-click="close()" aria-label="Close dialog">
+					<md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+				</md-button>-->
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div layout="row" flex>
+            <div layout="column" flex>Ingredients:
+                <ul>
+                    <li>Coffee</li>
+                    <li>Tea</li>
+                    <li>Milk</li>
+                </ul>
+            </div>
+            <div layout="column" flex>
+                <img ng-src="{{recipe.url}}" >
+            </div>
+        </div>
+        <div layout="row" flex>
+            {{recipe.description}}
+        </div>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="close()" aria-label="">
+            <span>Close</span>
+        </md-button>
+    </md-dialog-actions>
+
+</md-dialog>

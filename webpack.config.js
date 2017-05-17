@@ -45,7 +45,7 @@ module.exports = {
       // Converts ts to js
       test: /\.tsx?$/,
       loader: 'ts-loader',
-      exclude: /node_modules/,
+      exclude: ['node_modules','dist']
     }
     ]
   },
