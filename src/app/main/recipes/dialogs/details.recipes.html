@@ -1,33 +1,64 @@
-<md-dialog aria-label="" flex="50">
+<md-dialog aria-label="" class="recipe-dialog" flex-gt-md="40" flex-gt-sm="60" flex-gt-xs="80">
 
-    <md-toolbar style="background: #32ad90;color:black;font-weight:bold;">
-        <div class="md-toolbar-tools">
+    <!--<md-toolbar>
+        <div class="md-toolbar-tools recipes-dialog-toolbar">
             <h2><span>{{recipe.title}}</span></h2>
             <span flex></span>
-            <!--<md-button class="md-icon-button" ng-click="close()" aria-label="Close dialog">
+            <md-button class="md-icon-button" ng-click="close()" aria-label="Close dialog">
 					<md-icon md-font-icon="zmdi zmdi-close"></md-icon>
-				</md-button>-->
+				</md-button>
         </div>
-    </md-toolbar>
-    <md-dialog-content>
-        <div layout="row" flex>
-            <div layout="column" flex>Ingredients:
-                <ul>
-                    <li>Coffee</li>
-                    <li>Tea</li>
-                    <li>Milk</li>
-                </ul>
+    </md-toolbar>-->
+    <md-dialog-content class="p-16">
+        <div layout="row" class="pb-8" flex>
+            <div layout="column" class="p-16" flex>
+                <div layout="row" layout-align="center center" class="title" flex="40">
+                    {{recipe.title}}
+                </div>
+                <div layout="row" flex="10">
+                    <span class="created-by"> Created by:&nbsp;</span>
+                    <span class="created-by-name">Eric Andre</span>
+                </div>
+                <div layout="row" class="pt-8 pl-16 description" flex="50">
+                    "{{recipe.description}}"
+                </div>
+            </div>
+            <div layout="column" flex class="img-width">
+                <img ng-src="{{recipe.url}}">
+            </div>
+        </div>
+        <div layout="row" class="p-16 pt-24" flex>
+            <div layout="column" flex>
+
+                <div layout="row" class="pb-8 labels">
+                    Ingredients:
+                </div>
+                <md-divider>
+                    <div layout="row" class="pt-8">
+                        <ul>
+                            <li ng-repeat="ingr in recipe.ingredients">{{ingr}}</li>
+                        </ul>
+                    </div>
+                </md-divider>
+
+
             </div>
             <div layout="column" flex>
-                <img ng-src="{{recipe.url}}" >
+                <div layout="row" class="pb-8 labels">
+                    Directions:
+                </div>
+                <md-divider>
+                    <div layout="row" class="pt-8">
+                        <ul>
+                            <li ng-repeat="dir in recipe.ingredients">{{dir}}</li>
+                        </ul>
+                    </div>
+                </md-divider>
             </div>
-        </div>
-        <div layout="row" flex>
-            {{recipe.description}}
         </div>
 
     </md-dialog-content>
-    <md-dialog-actions layout="row">
+    <md-dialog-actions layout="row" class="pr-16 pb-8">
         <md-button ng-click="close()" aria-label="">
             <span>Close</span>
         </md-button>

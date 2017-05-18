@@ -1,29 +1,10 @@
-<!--<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
-      
-      <div  layout="column" ng-repeat="recipe in recipes" >
-
-            <md-card ng-click="vm.showDetails(recipe, $event)">
-                  
-                  <img ng-src="{{recipe.url}}" style="width:auto">
-                  
-                  <md-card-title>
-                        <md-card-title-text>
-                              <span class="md-headline">{{recipe.title}}</span>
-                        </md-card-title-text>
-                  </md-card-title>
-                  <md-card-content>
-                        <p>
-                             {{recipe.description}}
-                        </p>
-                  </md-card-content>
-            </md-card>
-      </div>
-</md-content>-->
-<md-content class="md-padding" layout-xs="column" layout="row">
-      <div layout="column" flex>
+<!--<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap
+ infinite-scroll="vm.initValues()" infinite-scroll-distance="2" infinite-scroll-disabled="infiniteScroll">-->
+ <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+      <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
       <div layout="row" ng-repeat="recipe in recipes">
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" >
+            <md-card flex ng-click="vm.showDetails(recipe, $event)">
                   
                   <img ng-src="{{recipe.url}}">
                   
@@ -41,7 +22,7 @@
             </md-card>
       </div>
       </div>
-      <div layout="column" flex>
+      <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
       <div layout="row" ng-repeat="recipe in recipes2" >
 
             <md-card flex ng-click="vm.showDetails(recipe, $event)" >
@@ -62,8 +43,8 @@
             </md-card>
       </div>
       </div>
-       <div layout="column" flex hide-sm show-gt-sm>
-      <div layout="row" ng-repeat="recipe in recipes" >
+       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
+      <div layout="row" ng-repeat="recipe in recipes3" >
 
             <md-card flex ng-click="vm.showDetails(recipe, $event)" >
                   
@@ -83,55 +64,8 @@
             </md-card>
       </div>
       </div>
-      <div layout="column" flex hide-sm show-gt-sm>
-      <div layout="row" ng-repeat="recipe in recipes2" >
-
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" >
-                  
-                  <img ng-src="{{recipe.url}}">
-                  
-                  <md-card-title>
-                        <md-card-title-text>
-                              <span class="md-headline">{{recipe.title}}</span>
-                        </md-card-title-text>
-                  </md-card-title>
-                  <md-card-content>
-                        <p>
-                             {{recipe.description}}
-                        </p>
-                  </md-card-content>
-                  
-            </md-card>
-      </div>
-      </div>
-      
-</md-content>
-
-
-<md-content class="md-padding" layout-xs="column" layout="row" show-sm hide-gt-sm hide-xs>
-       <div layout="column" flex>
-      <div layout="row" ng-repeat="recipe in recipes" >
-
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" >
-                  
-                  <img ng-src="{{recipe.url}}">
-                  
-                  <md-card-title>
-                        <md-card-title-text>
-                              <span class="md-headline">{{recipe.title}}</span>
-                        </md-card-title-text>
-                  </md-card-title>
-                  <md-card-content>
-                        <p>
-                             {{recipe.description}}
-                        </p>
-                  </md-card-content>
-                  
-            </md-card>
-      </div>
-      </div>
-      <div layout="column" flex>
-      <div layout="row" ng-repeat="recipe in recipes2" >
+      <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
+      <div layout="row" ng-repeat="recipe in recipes4" >
 
             <md-card flex ng-click="vm.showDetails(recipe, $event)" >
                   

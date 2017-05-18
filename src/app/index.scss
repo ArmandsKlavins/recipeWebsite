@@ -1,4 +1,7 @@
 @import './header/header.scss';
+@import './core/scss/index.scss';
+@import './main/recipes/recipes.scss';
+
 md-grid-list {
         height: 100%;
       }
@@ -6,4 +9,5 @@ md-grid-list {
       md-grid-tile {
         box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.37);
       }
+      
       

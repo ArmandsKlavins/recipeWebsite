@@ -6,5 +6,6 @@ angular.module('app.core',
     'ngAria',
     'ngMessages',
     'ngMaterial',
-    'ui.router'
+    'ui.router',
+    'infinite-scroll'
   ]);

@@ -5,5 +5,6 @@ export class RecipeModel extends BaseModel {
     servings: number;
     description: string;
     url: string;
+    ingredients: string[];
 }
 
