@@ -6,4 +6,5 @@ import 'angular-messages';
 import 'ng-infinite-scroll';
 
 // Import scss files
-require('../../node_modules/angular-material/angular-material.scss');
+require('angular-material/angular-material.scss');
+require('font-awesome/scss/font-awesome.scss');

@@ -41,11 +41,18 @@ module.exports = {
         use: ["css-loader", "sass-loader"]
       })
     },
+    // Load Fonts from dependencies 
+    // when they are required, for example: Font-awesome
+    {
+      test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url-loader?limit=10000&publicPath=../&name=./fonts/[hash].[ext]'
+      
+    },
     {
       // Converts ts to js
       test: /\.tsx?$/,
       loader: 'ts-loader',
-      exclude: ['node_modules','dist']
+      exclude: ['node_modules', 'dist']
     }
     ]
   },
