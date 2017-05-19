@@ -3,13 +3,15 @@ require('./index.scss');
 
 import { RouterConfig } from './index.route';
 import './core/core.module';
-import './main/recipes/recipes.module'
+import './main/recipes/recipes.module';
+import './main/cms/cms.module';
 
 // Angular modules that get imported
 var dependecies = [
   // Core
   'app.core',
-  'app.recipes'
+  'app.recipes',
+  'app.cms'
 ]
 
 angular.module('appDashboard', dependecies)

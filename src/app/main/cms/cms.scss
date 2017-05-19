@@ -1,0 +1,10 @@
+.hvr-fade {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-fade:hover {
+  background-color: #eaeaea;
+  cursor:pointer
+}

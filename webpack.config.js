@@ -33,7 +33,14 @@ module.exports = {
         }
       }]
     },
-    // Converts scss to css
+    // Imports css files
+    {
+      test:/\.css$/,
+      use: ExtractTextPlugin.extract({
+        use: 'css-loader'
+      })
+    },
+    // Imports scss files and Converts scss to css
     {
       test: /\.scss$/,
       use: ExtractTextPlugin.extract({

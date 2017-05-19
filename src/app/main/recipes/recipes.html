@@ -4,7 +4,7 @@
       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
       <div layout="row" ng-repeat="recipe in recipes">
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)">
+            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
                   
                   <img ng-src="{{recipe.url}}">
                   
@@ -25,7 +25,7 @@
       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
       <div layout="row" ng-repeat="recipe in recipes2" >
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" >
+            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
                   
                   <img ng-src="{{recipe.url}}">
                   
@@ -46,7 +46,7 @@
        <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
       <div layout="row" ng-repeat="recipe in recipes3" >
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" >
+            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
                   
                   <img ng-src="{{recipe.url}}">
                   
@@ -67,7 +67,7 @@
       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
       <div layout="row" ng-repeat="recipe in recipes4" >
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" >
+            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
                   
                   <img ng-src="{{recipe.url}}">
                   

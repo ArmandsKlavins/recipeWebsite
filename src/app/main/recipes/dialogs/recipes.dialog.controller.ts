@@ -1,6 +1,6 @@
-import { RecipeModel } from '../recipes.model'
+import { PublicRecipeModel } from '../recipes.model'
 export interface IRecipesDialogScope extends ng.IScope {
-    recipe: RecipeModel;
+    recipe: PublicRecipeModel;
     close: () => void;
 }
 export class RecipesDialogController {
@@ -9,14 +9,14 @@ export class RecipesDialogController {
         private $scope: IRecipesDialogScope,
         private $mdDialog: ng.material.IDialogService,
         private $q: ng.IQService,
-        private currentObject: RecipeModel
+        private currentObject: PublicRecipeModel
     ) {
         // Init
         if (currentObject) {
             $scope.recipe = angular.copy(currentObject);
         }
         else {
-            $scope.recipe = new RecipeModel();
+            $scope.recipe = new PublicRecipeModel();
         }
         $scope.close = () => {
             $mdDialog.cancel();

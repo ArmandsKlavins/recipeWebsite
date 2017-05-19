@@ -7,5 +7,6 @@ angular.module('app.core',
     'ngMessages',
     'ngMaterial',
     'ui.router',
-    'infinite-scroll'
+    'infinite-scroll',
+    'md.data.table'
   ]);
