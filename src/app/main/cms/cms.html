@@ -1,6 +1,17 @@
 <div class="content" layout="column" layout-align="center">
 		<md-card>
 			<div flex class="card md-default" layout-margin>
+				<div layout>
+					<div layout="column" flex>
+						<div flex layout="row" layout-align="start center">
+									<i class="fa fa-search pr-5" aria-hidden="true"></i>
+									<input class="search-input" ng-model-options="{ updateOn: 'blur'}"
+									 type="text" placeholder="Search by title" flex="100"
+									 flex-xs>
+								</div>
+					</div>
+				<div layout="column" layout-align="end"><md-button class="md-raised"><i class="fa fa-plus" aria-hidden="true"></i> Add new recipe</md-button></div>
+				</div>
 				<md-table-container>
 					<table md-table id="settingsTable" class="md-primary md-data-table" md-progress="vm.loadingPromise">
 						<thead md-head>
@@ -8,23 +19,15 @@
 								<th md-column>Name</th>
 								<th md-column>Desc</th>
 								<th md-column>Servings</th>
+								<th md-column></th>
 							</tr>
 						</thead>
 						<tbody md-body>
-							<tr md-row md-auto-select class="hvr-fade">
-								<td md-cell>Cake</td>
-								<td md-cell>Non</td>
-								<td md-cell>2</td>
-							</tr>
-                                          <tr md-row md-auto-select class="hvr-fade">
-								<td md-cell>Fish</td>
-								<td md-cell>null</td>
-								<td md-cell>2</td>
-							</tr>
-                                          <tr md-row md-auto-select class="hvr-fade">
-								<td md-cell>Turkey</td>
-								<td md-cell>pop</td>
-								<td md-cell>2</td>
+							<tr md-row md-auto-select ng-repeat="recipe in recipes" class="hvr-fade">
+								<td md-cell>{{recipe.title}}</td>
+								<td md-cell>{{recipe.description}}</td>
+								<td md-cell>{{recipe.servings}}</td>
+								<td md-cell><span><i class="fa fa-pencil fa-lg pr-8" aria-hidden="true"></i><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></span></td>
 							</tr>
 						</tbody>
 					</table>
