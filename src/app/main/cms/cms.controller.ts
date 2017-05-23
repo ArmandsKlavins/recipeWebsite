@@ -37,7 +37,7 @@ export class CmsController {
         //     }
         //     this.$scope.recipes.push(recipe);
         // }
-        this.$http.get('http://localhost:63802/api/values/list').then((response: any) =>{
+        this.$http.get('http://localhost:63802/api/recipes/list').then((response: any) =>{
             this.$scope.recipes = response.data;
             console.log(this.$scope.recipes);
         });

@@ -8,11 +8,11 @@
                 <!-- BLOCK STARTS HERE -->
                 <div layout="column" class="p-16" flex hide show-gt-sm>
                     <div layout="row" layout-align="center center" class="title" flex="40">
-                        {{recipe.title}}
+                        {{recipe.name}}
                     </div>
                     <div layout="row" flex="10">
                         <span class="created-by"> Created by:&nbsp;</span>
-                        <span class="created-by-name">Eric Andre</span>
+                        <span class="created-by-name">{{recipe.createdBy}}</span>
                     </div>
                     <div layout="row" class="pt-8 description" flex="50">
                         "{{recipe.description}}"
@@ -27,14 +27,14 @@
                 <!-- Show this block when width < 960px -->
                 <!-- MOBILE BLOCK START HERE-->
                 <div layout="column" class="p-8" flex hide-gt-sm>
-                    <div layout="row" layout-align="center center" class="title pt-8" flex="40">
-                        {{recipe.title}}
+                    <div layout="row" layout-align="center center" class="title pt-8">
+                        {{recipe.name}}
                     </div>
-                    <div layout="row" class="pt-8" flex="10">
+                    <div layout="row" class="pt-8" >
                         <span class="created-by"> Created by:&nbsp;</span>
-                        <span class="created-by-name">Eric Andre</span>
+                        <span class="created-by-name">{{recipe.createdBy}}</span>
                     </div>
-                    <div layout="row" class="pt-8 description" flex="50">
+                    <div layout="row" class="pt-8 description">
                         "{{recipe.description}}"
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <md-divider>
                         <div layout="row" class="pt-8">
                             <ul>
-                                <li ng-repeat="ingr in recipe.ingredients">{{ingr}}</li>
+                                <li ng-repeat="ingredient in recipe.ingredientsList" class="pt-5">{{ingredient}}</li>
                             </ul>
                         </div>
                     </md-divider>
@@ -63,8 +63,8 @@
                     </div>
                     <md-divider>
                         <div layout="row" class="pt-8">
-                            <ul>
-                                <li ng-repeat="dir in recipe.ingredients">{{dir}}</li>
+                             <ul>
+                                <li ng-repeat="direction in recipe.directionsList" class="pt-5">{{direction}}</li>
                             </ul>
                         </div>
                     </md-divider>
