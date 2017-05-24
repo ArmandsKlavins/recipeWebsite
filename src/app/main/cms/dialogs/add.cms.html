@@ -1,0 +1,81 @@
+<md-dialog aria-label="Add Recipe" class="cms-dialog-width">
+    <form id="addRecipeForm" name="addRecipeForm" novalidate>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add recipe</h2>
+                <span flex></span>
+                <i md-ink-ripples class="fa fa-times fa-lg cursos-pointer" ng-click="close()" aria-hidden="true"></i>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div layout="column">
+                <div layout="row" layout-align="center">
+                    <md-input-container class="md-block mr-8 ml-8" flex>
+                        <input type="text" name="recipeName" placeholder="Name" required ng-model="recipe.name">
+                    </md-input-container>
+                    <md-input-container class="md-block mr-8 ml-8" flex>
+                        <input type="text" name="recipeServings" placeholder="Servings" required ng-model="recipe.servings">
+                    </md-input-container>
+                    <md-input-container class="md-block mr-8 ml-8" flex>
+                        <input type="text" name="recipeTime" placeholder="Time in minutes" required ng-model="recipe.time">
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-align="center">
+                    <md-input-container class="md-block mr-8 ml-8" flex>
+                        <input type="text" name="recipeshortDescription" placeholder="Short description" required ng-model="recipe.shortDescription">
+                    </md-input-container>
+                    <md-input-container class="md-block mr-8 ml-8" flex>
+                        <input type="text" name="recipedescription" placeholder="Description" required ng-model="recipe.description">
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-align="center">
+                    <md-input-container class="md-block mr-8 ml-8" flex>
+                        <input type="text" name="recipetUrl" placeholder="Url" required ng-model="recipe.url">
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block ml-8" flex>
+                        <input type="text" name="recipeIngredients" placeholder="Ingredients" required ng-model="recipe.ingredients">
+                    </md-input-container>
+                    <span class="pt-10">
+                    <md-button class="md-icon-button md-primary" ng-click="vm.addIngredient()" aria-label="Add">
+						<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+					</md-button>
+                    </span>
+
+                    <md-input-container class="md-block ml-8" flex>
+                        <input type="text" name="recipeDirections" placeholder="Directions" required ng-model="recipe.directions">
+                    </md-input-container>
+                    <span class="pt-10">
+                    <md-button class="md-icon-button md-primary" ng-click="vm.addDirection()" aria-label="Add">
+						<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+					</md-button>
+                    </span>
+                </div>
+                <div layout="row">
+                    <div layout="column" flex>
+                    <ul>
+                        <li ng-repeat="ingr in recipe.ingredientsList track by $index">
+                            {{ingr}} &nbsp;
+                            <i md-ink-ripples ng-click="vm.removeIngredient($index)" class="fa fa-times cursos-pointer" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                    <div layout="column" flex>
+                    <ul>
+                        <li ng-repeat="dir in recipe.directionsList track by $index">
+                            {{dir}} &nbsp;
+                            <i md-ink-ripples ng-click="vm.removeDirection($index)" class="fa fa-times cursos-pointer" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-disabled="addRecipeForm.$invalid" ng-click="save(recipe)" aria-label="Save recipe">
+                Save
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

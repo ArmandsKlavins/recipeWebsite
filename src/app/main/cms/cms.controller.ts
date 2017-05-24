@@ -1,4 +1,5 @@
 import { RecipeModel } from './cms.model';
+import { ICmsDialogService } from './cms.dialog.service';
 
 export interface ICmsScope extends ng.IScope {
     /**
@@ -11,7 +12,8 @@ export class CmsController {
     /* @ngInject */
     constructor(
         private $scope: ICmsScope,
-        private $http: ng.IHttpService
+        private $http: ng.IHttpService,
+        private CmsDialogService: ICmsDialogService
     ) {
         // Init
         this.$scope.recipes = new Array<RecipeModel>();
@@ -42,4 +44,25 @@ export class CmsController {
             console.log(this.$scope.recipes);
         });
     }
+    showDetails = (recipe: RecipeModel, evt: Event) =>{
+        this.CmsDialogService.show(evt,'add',recipe).then((modifiedSample: RecipeModel) => {
+                console.log('We have to change this somewhere, for example, in array with appropriate index: ');
+                console.log(modifiedSample);
+               
+            },
+                (err: any) => {
+                    // Error
+                });
+    }
+    addRecipe = (evt: Event) =>{
+        this.CmsDialogService.show(evt,'add').then((modifiedSample: RecipeModel) => {
+                console.log('We have to change this somewhere, for example, in array with appropriate index: ');
+                console.log(modifiedSample);
+               
+            },
+                (err: any) => {
+                    // Error
+                });
+    }
+    
 }

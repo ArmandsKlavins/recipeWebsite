@@ -1,10 +1,16 @@
 import { BaseModel } from './../../index.model';
 
 export class RecipeModel extends BaseModel {
-    title: string;
-    servings: number;
+    name: string;
     description: string;
+    shortDescription: string;
+    time: number;
+    servings: number;
+    ingredients: string;
+    ingredientsList: string[];
+    directions: string;
+    directionsList: string[];
     url: string;
-    ingredients: string[];
+    createdBy: string;
 }
 

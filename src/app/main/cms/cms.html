@@ -12,7 +12,7 @@
 					</div>
 				<div layout="column" layout-align="end">
 					<span hide-xs>
-					<md-button class="md-raised"><i class="fa fa-plus" aria-hidden="true"></i> Add new recipe</md-button>
+					<md-button class="md-raised" ng-click="vm.addRecipe($event)"><i class="fa fa-plus" aria-hidden="true"></i> Add new recipe</md-button>
 					</span>
 					<span hide-gt-xs><md-button class="md-icon-button md-primary" aria-label="Add">
 						<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
@@ -25,16 +25,14 @@
 						<thead md-head>
 							<tr md-row>
 								<th md-column>Name</th>
-								<th md-column>Desc</th>
-								<th md-column>Servings</th>
+								<th md-column>Created by</th>
 								<th md-column style="width:150px"></th>
 							</tr>
 						</thead>
 						<tbody md-body>
 							<tr md-row md-auto-select ng-repeat="recipe in recipes" class="hvr-fade">
 								<td md-cell>{{recipe.name}}</td>
-								<td md-cell>{{recipe.description}}</td>
-								<td md-cell>{{recipe.servings}}</td>
+								<td md-cell>{{recipe.createdBy}}</td>
 								<td md-cell>
 									<span>
 										<md-button class="md-icon-button md-primary" aria-label="edit">
