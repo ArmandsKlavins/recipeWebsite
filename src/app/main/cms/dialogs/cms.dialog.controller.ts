@@ -2,6 +2,7 @@ import { RecipeModel } from '../cms.model'
 export interface ICmsDialogScope extends ng.IScope {
     recipe: RecipeModel;
     close: () => void;
+    save: (model:any) => void;
 }
 export class CmsDialogController {
     /* @ngInject */
@@ -15,6 +16,13 @@ export class CmsDialogController {
         // Init
         if (currentObject) {
             $scope.recipe = angular.copy(currentObject);
+            $scope.recipe.ingredientsList = new Array<string>();
+            $scope.recipe.directionsList = new Array<string>();
+
+            $scope.recipe.ingredientsList = $scope.recipe.ingredients.split(';');
+            $scope.recipe.directionsList = $scope.recipe.directions.split(';');
+            $scope.recipe.ingredients = null;
+            $scope.recipe.directions = null;
         }
         else {
             $scope.recipe = new RecipeModel();
@@ -29,7 +37,7 @@ export class CmsDialogController {
             // If we have currentObject, then we are editing this object
             if (currentObject) {
                 // Send modified object to server to apply modified fields
-                // this.editSample(recipe);
+                 this.editRecipe(recipe);
             } else {
                 // Else we call method that will physicly add this object to database (Through server)
                 this.addRecipe(recipe);
@@ -54,9 +62,28 @@ export class CmsDialogController {
     removeDirection = (index: number) => {
         this.$scope.recipe.directionsList.splice(index, 1);
     }
+    
     addRecipe = (recipe: RecipeModel) => {
+
+        this.convertListToString(recipe);
+
+        this.$http.post('http://localhost:63802/api/recipes', recipe).then((response: any) => {
+            this.$mdDialog.hide(response.data);
+        });
+    }
+
+    editRecipe = (recipe: RecipeModel) =>{
+        
+        this.convertListToString(recipe);
+        this.$http.put('http://localhost:63802/api/recipes/'+recipe.id, recipe).then((response: any) => {
+            this.$mdDialog.hide(response.data);
+        });
+    }
+
+    convertListToString = (recipe: RecipeModel) =>{
         recipe.ingredients = '';
         recipe.directions = '';
+        
         for (var i = 0; i < recipe.ingredientsList.length - 1; i++) {
             recipe.ingredients += recipe.ingredientsList[i] + ';';
         }
@@ -66,9 +93,5 @@ export class CmsDialogController {
             recipe.directions += recipe.directionsList[i] + ';';
         }
         recipe.directions += recipe.directionsList[recipe.directionsList.length-1];
-
-        this.$http.post('http://localhost:63802/api/recipes', recipe).then((response: any) => {
-            console.log(response);
-        });
     }
 }

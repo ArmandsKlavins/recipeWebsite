@@ -6,4 +6,5 @@
 
 export class BaseModel {
     id: number;
+    isDeleted: boolean;
 }
