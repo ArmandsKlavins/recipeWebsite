@@ -8,5 +8,6 @@ angular.module('app.core',
     'ngMaterial',
     'ui.router',
     'infinite-scroll',
-    'md.data.table'
+    'md.data.table',
+    'LocalStorageModule'
   ]);

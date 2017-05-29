@@ -15,7 +15,9 @@ export class CmsController {
         private $scope: ICmsScope,
         private $http: ng.IHttpService,
         private CmsDialogService: ICmsDialogService,
-        private $interval: ng.IIntervalService
+        private $interval: ng.IIntervalService,
+        private localStorageService: ng.local.storage.ILocalStorageService,
+        private $state: ng.ui.IStateService
     ) {
         // Init
         this.$scope.recipes = new Array<RecipeModel>();
@@ -86,6 +88,11 @@ export class CmsController {
         recipe.isDeleted = false;
         // Cancel interval that is responsible for object removing in array
         this.$interval.cancel(this.removeInterval['' + recipe.id]);
+    }
+
+    logout = () =>{
+        this.localStorageService.remove('Profile');
+        this.$state.go('login');
     }
 
     IndexOfObjectInArray = (array: any[], prop: string, val: any) => {

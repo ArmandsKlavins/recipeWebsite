@@ -18,5 +18,5 @@ var dependecies = [
 
 angular.module('appDashboard', dependecies)
 
-  .config(RouterConfig)
-  .component('myHeader',{template:require('./header/header.html')});
+  .config(RouterConfig);
+  //.component('myHeader',{template:require('./header/header.html')});

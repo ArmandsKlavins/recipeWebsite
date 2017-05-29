@@ -5,6 +5,7 @@ import 'angular-ui-router';
 import 'angular-messages';
 import 'ng-infinite-scroll';
 import 'angular-material-data-table/index.js';
+import 'angular-local-storage';
 
 // Import scss files
 require('angular-material/angular-material.scss');

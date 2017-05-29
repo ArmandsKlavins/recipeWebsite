@@ -11,7 +11,8 @@ export class CmsDialogController {
         private $mdDialog: ng.material.IDialogService,
         private $http: ng.IHttpService,
         private $q: ng.IQService,
-        private currentObject: RecipeModel
+        private currentObject: RecipeModel,
+        private localStorageService: ng.local.storage.ILocalStorageService
     ) {
         // Init
         if (currentObject) {
@@ -65,8 +66,9 @@ export class CmsDialogController {
     
     addRecipe = (recipe: RecipeModel) => {
 
-        this.convertListToString(recipe);
-
+        this.convertListToString(recipe);   
+        var profile = this.localStorageService.get('Profile');
+        recipe.createdBy = String(profile);
         this.$http.post('http://localhost:63802/api/recipes', recipe).then((response: any) => {
             this.$mdDialog.hide(response.data);
         });
