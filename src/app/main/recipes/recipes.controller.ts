@@ -40,6 +40,14 @@ export class RecipesController {
             for(var i = 0; i<this.$scope.data.length; i++){
                 this.$scope.data[i].ingredientsList = this.$scope.data[i].ingredients.split(';');
                 this.$scope.data[i].directionsList = this.$scope.data[i].directions.split(';');
+                var hours = Math.floor(this.$scope.data[i].time/60);
+                var minutes = this.$scope.data[i].time%60;
+                if(hours<1){
+                    this.$scope.data[i].timeInString = minutes+' m';
+                }
+                else{
+                    this.$scope.data[i].timeInString = hours+' h '+minutes+' m';
+                }           
                 arrayNumber = (i+1)%4;
                 switch(arrayNumber){
                     case 1:

@@ -3,6 +3,7 @@ export class PublicRecipeModel {
     description: string;
     shortDescription: string;
     time: number;
+    timeInString: string;
     servings: number;
     ingredients: string;
     ingredientsList: string[];

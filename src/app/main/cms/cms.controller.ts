@@ -72,11 +72,11 @@ export class CmsController {
         this.removeInterval['' + recipe.id] = this.$interval(
             () => {
 
-                // this.$http.delete('http://localhost:63802/api/recipes/' + recipe.id).then(() => {
-                //     this.$scope.recipes.splice(index, 1);
-                // });
-                var objectIndex = this.IndexOfObjectInArray(this.$scope.recipes, 'id', recipe.id);
+                this.$http.delete('http://localhost:63802/api/recipes/' + recipe.id).then(() => {
+                    var objectIndex = this.IndexOfObjectInArray(this.$scope.recipes, 'id', recipe.id);
                 this.$scope.recipes.splice(objectIndex, 1);
+                });
+                
                 
             }
             // Interval is set to 5 seconds and to execute only once (1 time).
