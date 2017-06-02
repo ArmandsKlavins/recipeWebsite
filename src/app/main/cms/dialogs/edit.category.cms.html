@@ -1,0 +1,26 @@
+<md-dialog aria-label="Edit Category" class="cms-category-dialog-width">
+    <form id="editCategoryForm" name="editCategoryForm" novalidate>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Edit category</h2>
+                <span flex></span>
+                <i md-ink-ripples class="fa fa-times fa-lg cursos-pointer" ng-click="close()" aria-hidden="true"></i>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="pt-20">
+                <md-input-container class="md-block mr-8 ml-8" flex>
+                    <input type="text" name="categoryName" placeholder="Name" required ng-model="category.name">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-disabled="editCategoryForm.$invalid" ng-click="save(category)" aria-label="Save category">
+                Save
+            </md-button>
+            <md-button ng-disabled="editRecipeForm.$invalid" ng-click="close()" aria-label="Save recipe">
+                Close
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

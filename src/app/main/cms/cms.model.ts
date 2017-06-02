@@ -10,7 +10,12 @@ export class RecipeModel extends BaseModel {
     ingredientsList: string[];
     directions: string;
     directionsList: string[];
+    categories: CategoryModel[];
     url: string;
     createdBy: string;
+}
+export class CategoryModel extends BaseModel {
+    id: number;
+    name: string;
 }
 

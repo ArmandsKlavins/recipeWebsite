@@ -1,8 +1,8 @@
-<md-dialog aria-label="Add Recipe" class="cms-dialog-width">
-    <form id="addRecipeForm" name="addRecipeForm" novalidate>
+<md-dialog aria-label="Edit Recipe" class="cms-dialog-width">
+    <form id="editRecipeForm" name="editRecipeForm" novalidate>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Add recipe</h2>
+                <h2>Edit recipe</h2>
                 <span flex></span>
                 <i md-ink-ripples class="fa fa-times fa-lg cursos-pointer" ng-click="close()" aria-hidden="true"></i>
             </div>
@@ -31,6 +31,14 @@
                 <div layout="row" layout-xs="column" layout-align="center">
                     <md-input-container class="md-block mr-8 ml-8" flex>
                         <input type="text" name="recipetUrl" placeholder="Url" ng-model="recipe.url">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label>Categories</label>
+                        <md-select multiple ng-model="recipe.categories">
+                        <md-option ng-repeat="category in categories" ng-value="category" ng-selected="vm.checkValue(category.id)">
+                            {{category.name}}
+                        </md-option>
+                        </md-select>
                     </md-input-container>
                 </div>
                 <div layout="row" layout-wrap>
@@ -99,8 +107,11 @@
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">
-            <md-button ng-disabled="addRecipeForm.$invalid" ng-click="save(recipe)" aria-label="Save recipe">
+            <md-button ng-disabled="editRecipeForm.$invalid" ng-click="save(recipe)" aria-label="Save recipe">
                 Save
+            </md-button>
+            <md-button ng-disabled="editRecipeForm.$invalid" ng-click="close()" aria-label="Save recipe">
+                Close
             </md-button>
         </md-dialog-actions>
     </form>
