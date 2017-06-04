@@ -2,7 +2,7 @@
 
 	<!-- LOG OUT -->
 	<span flex layout="row" layout-align="end" style="background:white;">
-	<md-button class="md-raised" ng-click="vm.logout()"> LOGOUT </md-button>
+	<md-button ng-click="vm.logout()"><i class="fa fa-times" aria-hidden="true"></i> Log out</md-button>
 	</span>
 
 
@@ -12,13 +12,14 @@
 
 		<md-tab label="Recipes">
 			<md-content>
-				<md-card class="p-0 m-0">
+				<md-card>
 					<div flex class="card md-default" layout-margin>
 						<div layout>
 							<div layout="column" flex>
 								<div flex layout="row" layout-align="start center">
 									<i class="fa fa-search pr-8 pl-24" aria-hidden="true"></i>
-									<input class="search-input" ng-model-options="{ updateOn: 'blur'}" type="search" placeholder="Search by title" flex="100"
+									<input class="search-input" ng-model="query.filter" ng-change="vm.getRecipes()" 
+									ng-model-options="{debounce:500}" type="search" placeholder="Search by name" flex="100"
 									 flex-xs>
 								</div>
 							</div>
@@ -27,7 +28,7 @@
 					<md-button class="md-raised" ng-click="vm.addRecipe($event)"><i class="fa fa-plus" aria-hidden="true"></i> Add new recipe</md-button>
 					</span>
 								<span hide-gt-xs><md-button ng-click="vm.addRecipe($event)" class="md-icon-button md-primary" aria-label="Add">
-						<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+						<i class="fa fa-plus fa-2x " aria-hidden="true"></i>
 						</md-button>
 					</span>
 							</div>
@@ -71,6 +72,9 @@
 								</tbody>
 							</table>
 						</md-table-container>
+						<md-table-pagination md-limit="query.limit" md-limit-options="[10, 20, 50]" md-page="query.page" md-total="{{totalRecipes}}"
+                md-page-select="true" md-boundary-links="false" md-on-paginate="vm.onPaginateRecipes">
+            </md-table-pagination>
 					</div>
 				</md-card>
 			</md-content>
@@ -80,13 +84,14 @@
 
 		<md-tab label="Categories">
 			<md-content>
-				<md-card class="p-0 m-0">
+				<md-card>
 					<div flex class="card md-default" layout-margin>
 						<div layout>
 							<div layout="column" flex>
 								<div flex layout="row" layout-align="start center">
 									<i class="fa fa-search pr-8 pl-24" aria-hidden="true"></i>
-									<input class="search-input" ng-model-options="{ updateOn: 'blur'}" type="search" placeholder="Search by title" flex="100"
+									<input class="search-input" ng-model="query2.filter" ng-change="vm.getCategories()" 
+									ng-model-options="{debounce:500}" type="search" placeholder="Search by name" flex="100"
 									 flex-xs>
 								</div>
 							</div>
@@ -137,6 +142,9 @@
 								</tbody>
 							</table>
 						</md-table-container>
+						<md-table-pagination md-limit="query2.limit" md-limit-options="[10, 20, 50]" md-page="query2.page" md-total="{{totalCategories}}"
+                md-page-select="true" md-boundary-links="false" md-on-paginate="vm.onPaginateCategories">
+            </md-table-pagination>
 					</div>
 				</md-card>
 			</md-content>

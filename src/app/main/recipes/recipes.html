@@ -1,92 +1,145 @@
 <div class="header" layout="row" layout-align="center center">
-   GetCooking&nbsp;<i class="fa fa-cutlery" aria-hidden="true"></i>
+      GetCooking&nbsp;<i class="fa fa-cutlery" aria-hidden="true"></i>
 </div>
-<!--<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap
- infinite-scroll="vm.initValues()" infinite-scroll-distance="2" infinite-scroll-disabled="infiniteScroll">-->
- <md-content class="md-padding recipe-width" layout-xs="column" layout="row" layout-wrap>
+<div class="mt-16" layout="row" flex layout-align="center center">
+
+      <div layout="column" flex="90" flex-md="95" flex-sm="95" flex-xs="95">
+            <div layout="row" flex>
+                  <md-menu hide-xs>
+                        <span layout="row" layout-align="center center" class="search-category p-16 mr-16" ng-click="$mdMenu.open($event)">
+                        Category &nbsp;<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        </span>
+
+                        <md-menu-content>
+                              <md-menu-item>
+                                    <md-button ng-click="vm.getRecipes('all')">
+                                          <span>All</span>
+                                    </md-button>
+                              </md-menu-item>
+                              <md-menu-item ng-repeat="category in categories">
+                                    <md-button ng-click="vm.getRecipes(category.name)">
+                                          <span>{{category.name}}</span>
+                                    </md-button>
+                              </md-menu-item>
+                        </md-menu-content>
+                  </md-menu>
+
+                  <md-menu hide-gt-xs>
+                        
+                        <span layout="row" layout-align="center center" class="search-category pt-8 pb-8" ng-click="$mdMenu.open($event)"><md-button ng-click="$mdMenu.open($event)" class="md-icon-button md-primary" aria-label="Add">
+						<i class="fa fa-chevron-down" aria-hidden="true" style="color:black;"></i>
+						</md-button></span>
+
+                        <md-menu-content>
+                              <md-menu-item>
+                                    <md-button ng-click="vm.getRecipes('all')">
+                                          <span>All</span>
+                                    </md-button>
+                              </md-menu-item>
+                              <md-menu-item ng-repeat="category in categories">
+                                    <md-button ng-click="vm.getRecipes(category.name)">
+                                          <span>{{category.name}}</span>
+                                    </md-button>
+                              </md-menu-item>
+                        </md-menu-content>
+                  </md-menu>
+
+                  <input class="search-input2" ng-model="query.filter" ng-model-options="{debounce:500}" type="search" placeholder="Search recipe"
+                        flex>
+
+                  <span layout="row" layout-align="center center" class="search-button" ng-click="vm.getRecipes()">
+                        <i class="fa fa-search fa-lg p-20" style="color:white;" aria-hidden="true"></i>
+                        </span>
+            </div>
+      </div>
+</div>
+<md-content class="md-padding recipe-width" layout-xs="column" layout="row" layout-wrap
+ infinite-scroll="vm.getRecipesInfinite()" infinite-scroll-distance="2" infinite-scroll-disabled="infiniteScroll">
+<!--<md-content class="md-padding recipe-width" layout-xs="column" layout="row" layout-wrap>-->
+
       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
-      <div layout="row" ng-repeat="recipe in recipes">
+            <div layout="row" ng-repeat="recipe in recipes">
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
-                  
-                  <img ng-src="{{recipe.url}}">
-                  
-                  <md-card-title>
-                        <md-card-title-text>
-                              <span class="md-headline">{{recipe.name}}</span>
-                        </md-card-title-text>
-                  </md-card-title>
-                  <md-card-content>
-                        <p>
-                             {{recipe.shortDescription}}
-                        </p>
-                  </md-card-content>
-                 
-            </md-card>
-      </div>
+                  <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
+
+                        <img ng-src="{{recipe.url}}">
+
+                        <md-card-title>
+                              <md-card-title-text>
+                                    <span class="md-headline">{{recipe.name}}</span>
+                              </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                              <p>
+                                    {{recipe.shortDescription}}
+                              </p>
+                        </md-card-content>
+
+                  </md-card>
+            </div>
       </div>
       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
-      <div layout="row" ng-repeat="recipe in recipes2" >
+            <div layout="row" ng-repeat="recipe in recipes2">
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
-                  
-                  <img ng-src="{{recipe.url}}">
-                  
-                  <md-card-title>
-                        <md-card-title-text>
-                              <span class="md-headline">{{recipe.name}}</span>
-                        </md-card-title-text>
-                  </md-card-title>
-                  <md-card-content>
-                        <p>
-                             {{recipe.shortDescription}}
-                        </p>
-                  </md-card-content>
-                  
-            </md-card>
-      </div>
-      </div>
-       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
-      <div layout="row" ng-repeat="recipe in recipes3" >
+                  <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
-                  
-                  <img ng-src="{{recipe.url}}">
-                  
-                  <md-card-title>
-                        <md-card-title-text>
-                              <span class="md-headline">{{recipe.name}}</span>
-                        </md-card-title-text>
-                  </md-card-title>
-                  <md-card-content>
-                        <p>
-                             {{recipe.shortDescription}}
-                        </p>
-                  </md-card-content>
-                  
-            </md-card>
-      </div>
+                        <img ng-src="{{recipe.url}}">
+
+                        <md-card-title>
+                              <md-card-title-text>
+                                    <span class="md-headline">{{recipe.name}}</span>
+                              </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                              <p>
+                                    {{recipe.shortDescription}}
+                              </p>
+                        </md-card-content>
+
+                  </md-card>
+            </div>
       </div>
       <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
-      <div layout="row" ng-repeat="recipe in recipes4" >
+            <div layout="row" ng-repeat="recipe in recipes3">
 
-            <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
-                  
-                  <img ng-src="{{recipe.url}}">
-                  
-                  <md-card-title>
-                        <md-card-title-text>
-                              <span class="md-headline">{{recipe.name}}</span>
-                        </md-card-title-text>
-                  </md-card-title>
-                  <md-card-content>
-                        <p>
-                             {{recipe.shortDescription}}
-                        </p>
-                  </md-card-content>
-                  
-            </md-card>
+                  <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
+
+                        <img ng-src="{{recipe.url}}">
+
+                        <md-card-title>
+                              <md-card-title-text>
+                                    <span class="md-headline">{{recipe.name}}</span>
+                              </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                              <p>
+                                    {{recipe.shortDescription}}
+                              </p>
+                        </md-card-content>
+
+                  </md-card>
+            </div>
       </div>
+      <div layout="column" flex-gt-sm="25" flex-gt-xs="50" flex-xs>
+            <div layout="row" ng-repeat="recipe in recipes4">
+
+                  <md-card flex ng-click="vm.showDetails(recipe, $event)" style="cursor:pointer;">
+
+                        <img ng-src="{{recipe.url}}">
+
+                        <md-card-title>
+                              <md-card-title-text>
+                                    <span class="md-headline">{{recipe.name}}</span>
+                              </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                              <p>
+                                    {{recipe.shortDescription}}
+                              </p>
+                        </md-card-content>
+
+                  </md-card>
+            </div>
       </div>
-      
+
 </md-content>

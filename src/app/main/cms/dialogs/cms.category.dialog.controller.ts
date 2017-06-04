@@ -25,7 +25,7 @@ export class CmsCategoryDialogController {
             $mdDialog.cancel();
         };
         $scope.save = (category: CategoryModel) => {
-            console.log(category);
+            
             // If we have currentObject, then we are editing this object
             if (currentObject) {
                 // Send modified object to server to apply modified fields

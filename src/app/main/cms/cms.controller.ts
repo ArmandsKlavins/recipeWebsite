@@ -9,6 +9,10 @@ export interface ICmsScope extends ng.IScope {
      */
     recipes: RecipeModel[];
     categories: CategoryModel[];
+    query: any;
+    totalRecipes: number;
+    totalCategories: number;
+    query2: any;
 }
 
 export class CmsController {
@@ -26,20 +30,53 @@ export class CmsController {
         // Init
         this.$scope.recipes = new Array<RecipeModel>();
         this.$scope.categories = new Array<CategoryModel>();
+        $scope.query = {
+            filter: "",
+            limit: 10,
+            page: 1
+        }
+        $scope.query2 = {
+            filter: "",
+            limit: 10,
+            page: 1
+        }
+
         this.initValue();
     }
     initValue = () => {
 
-        this.$http.get('http://localhost:63802/api/recipes/list').then((response: any) => {
-            this.$scope.recipes = response.data;
-            console.log(this.$scope.recipes);
-        });
-        this.$http.get('http://localhost:63802/api/categories/list').then((response: any) => {
-            this.$scope.categories = response.data;
-            console.log(this.$scope.categories);
-        });
+        this.getCategories();
+        this.getRecipes();
+        
 
     }
+    getRecipes = () =>{
+        
+        this.$http.post('http://localhost:63802/api/recipes/list',this.$scope.query).then((response: any) => {
+            this.$scope.recipes = response.data;
+            this.$scope.totalRecipes = response.headers('RecipesCount');
+            
+        });
+        
+    }
+    getCategories = () =>{
+        
+        this.$http.post('http://localhost:63802/api/categories/list',this.$scope.query2).then((response: any) => {
+            this.$scope.categories = response.data;
+            this.$scope.totalCategories = response.headers('CategoryCount');
+        });
+    }
+
+    onPaginateRecipes = (page: number, limit: number) => {
+            // Extend transmits the new settings and page size in the query
+            angular.extend(this.$scope.query, { page: page, limit: limit });
+            this.getRecipes();
+        };
+        onPaginateCategories = (page: number, limit: number) => {
+            // Extend transmits the new settings and page size in the query
+            angular.extend(this.$scope.query2, { page: page, limit: limit });
+            this.getCategories();
+        };
 //#region recipes
     addRecipe = (evt: Event) => {
         this.CmsDialogService.show(evt, 'add.recipe').then((modifiedRecipe: RecipeModel) => {
@@ -93,7 +130,7 @@ export class CmsController {
         return v[prop];
     }).indexOf(val);};
 //#endregion
-
+//#region categories
     addCategory = (evt: Event) => {
         this.CmsCategoryDialogService.show(evt, 'add.category').then((modifiedCategory: CategoryModel) => {
             this.$scope.categories.push(modifiedCategory);
@@ -135,6 +172,7 @@ export class CmsController {
         // Cancel interval that is responsible for object removing in array
         this.$interval.cancel(this.removeInterval['' + category.id]);
     }
+//#endregion
 
 
 }

@@ -11,6 +11,7 @@ export class RecipeModel extends BaseModel {
     directions: string;
     directionsList: string[];
     categories: CategoryModel[];
+    categoriesSelect: CategoryModel[];
     url: string;
     createdBy: string;
 }

@@ -12,20 +12,49 @@
                 <div layout="row" layout-xs="column" layout-align="center">
                     <md-input-container class="md-block mr-8 ml-8" flex>
                         <input type="text" name="recipeName" placeholder="Name" required ng-model="recipe.name">
+                        <div ng-messages="addRecipeForm.recipeName.$error">
+                              <div ng-message="required">
+                                    <span>Name required</span>
+                              </div>
+                        </div>
                     </md-input-container>
                     <md-input-container class="md-block mr-8 ml-8" flex>
                         <input type="text" name="recipeServings" placeholder="Servings" required ng-model="recipe.servings">
+                        <div ng-messages="addRecipeForm.recipeServings.$error">
+                              <div ng-message="required">
+                                    <span>Servings required</span>
+                              </div>
+                        </div>
                     </md-input-container>
                     <md-input-container class="md-block mr-8 ml-8" flex>
                         <input type="text" name="recipeTime" placeholder="Time in minutes" required ng-model="recipe.time">
+                        <div ng-messages="addRecipeForm.recipeTime.$error">
+                              <div ng-message="required">
+                                    <span>Time required</span>
+                              </div>
+                        </div>
                     </md-input-container>
                 </div>
                 <div layout="row" layout-xs="column" layout-align="center">
                     <md-input-container class="md-block mr-8 ml-8" flex>
-                        <textarea name="recipesShortDescription" ng-model="recipe.shortDescription" required placeholder="Short description" md-select-on-focus></textarea>
+                        <textarea name="recipesShortDescription" ng-model="recipe.shortDescription" required placeholder="Short description" md-select-on-focus>
+                            
+                        </textarea>
+                        <div ng-messages="addRecipeForm.recipesShortDescription.$error">
+                              <div ng-message="required">
+                                    <span>Short description required</span>
+                              </div>
+                        </div>
                     </md-input-container>
                     <md-input-container class="md-block mr-8 ml-8" flex>
-                        <textarea name="recipesDescription" ng-model="recipe.description" required placeholder="Description" md-select-on-focus></textarea>
+                        <textarea name="recipesDescription" ng-model="recipe.description" required placeholder="Description" md-select-on-focus>
+                            
+                        </textarea>
+                        <div ng-messages="addRecipeForm.recipesDescription.$error">
+                              <div ng-message="required">
+                                    <span>Description required</span>
+                              </div>
+                        </div>
                     </md-input-container>
                 </div>
                 <div layout="row" layout-xs="column" layout-align="center">

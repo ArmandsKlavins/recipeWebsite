@@ -6,9 +6,19 @@
             <form class="pt-20 pb-30 pl-20 pr-20" id="loginForm" name="loginForm" novalidate>
                   <md-input-container class="md-block" md-no-float>
                         <input type="text" name="username" ng-model="login.username" placeholder="Username" required>
+                        <div ng-messages="loginForm.username.$error">
+                              <div ng-message="required">
+                                    <span>Username required</span>
+                              </div>
+                        </div>
                   </md-input-container>
                   <md-input-container class="md-block" md-no-float>
                         <input type="password" name="password" ng-model="login.password" placeholder="Password" required>
+                        <div ng-messages="loginForm.password.$error">
+                              <div ng-message="required">
+                                    <span>Password required</span>
+                              </div>
+                        </div>
                   </md-input-container>
 
                   <md-dialog-actions layout="row" layout-align="end">

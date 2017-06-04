@@ -11,6 +11,11 @@
             <div class="pt-20">
                 <md-input-container class="md-block mr-8 ml-8" flex>
                     <input type="text" name="categoryName" placeholder="Name" required ng-model="category.name">
+                    <div ng-messages="addCategoryForm.categoryName.$error">
+                        <div ng-message="required">
+                            <span>Name required</span>
+                        </div>
+                    </div>
                 </md-input-container>
             </div>
         </md-dialog-content>
